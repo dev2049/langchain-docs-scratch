@@ -9,4 +9,5 @@ cp -r extras/* _dist/docs_skeleton/docs
 cd _dist/docs_skeleton
 poetry run nbdoc_build
 yarn install
-yarn start
+GIT_USER=dev2049 yarn deploy
+

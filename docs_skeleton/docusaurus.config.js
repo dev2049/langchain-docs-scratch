@@ -11,6 +11,9 @@ const snippetsPath = path.resolve(__dirname, "..", "snippets")
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
+  organizationName: "dev2049",
+  projectName: "langchain-docs-scratch",
+  deploymentBranch: "gh-pages",
   title: "🦜️🔗 Langchain",
   tagline: "LangChain Python Docs",
   favicon: "img/favicon.ico",
@@ -18,10 +21,10 @@ const config = {
     mendableAnonKey: process.env.MENDABLE_ANON_KEY,
   },
   // Set the production url of your site here
-  url: "https://python.langchain.com",
+  url: "https://dev2049.github.io",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: "/",
+  baseUrl: "/langchain-docs-scratch/",
 
   // onBrokenLinks: "throw",
   // onBrokenMarkdownLinks: "throw",
