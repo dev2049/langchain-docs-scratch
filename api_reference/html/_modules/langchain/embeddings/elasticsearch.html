@@ -1,0 +1,602 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>langchain.embeddings.elasticsearch &#8212; 🦜🔗 LangChain 0.0.190</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/autodoc_pydantic.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/tabs.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../../../_static/js/mendablesearch.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">🦜🔗 LangChain 0.0.190</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../models.html">
+   Models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../modules/llms.html">
+     LLMs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../modules/chat_models.html">
+     Chat Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../modules/embeddings.html">
+     Embeddings
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../prompts.html">
+   Prompts
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../modules/prompts.html">
+     PromptTemplates
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../modules/example_selector.html">
+     Example Selector
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../modules/output_parsers.html">
+     Output Parsers
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../indexes.html">
+   Indexes
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../modules/docstore.html">
+     Docstore
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../modules/text_splitter.html">
+     Text Splitter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../modules/document_loaders.html">
+     Document Loaders
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../modules/vectorstores.html">
+     Vector Stores
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../modules/retrievers.html">
+     Retrievers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../modules/document_compressors.html">
+     Document Compressors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../modules/document_transformers.html">
+     Document Transformers
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../modules/memory.html">
+   Memory
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../modules/chains.html">
+   Chains
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../agents.html">
+   Agents
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../modules/agents.html">
+     Agents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../modules/tools.html">
+     Tools
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../modules/agent_toolkits.html">
+     Agent Toolkits
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../modules/utilities.html">
+   Utilities
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../modules/experimental.html">
+   Experimental Modules
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/hwchase17/langchain"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1></h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <h1>Source code for langchain.embeddings.elasticsearch</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
+
+<span class="kn">from</span> <span class="nn">langchain.utils</span> <span class="kn">import</span> <span class="n">get_from_env</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">elasticsearch</span> <span class="kn">import</span> <span class="n">Elasticsearch</span>
+    <span class="kn">from</span> <span class="nn">elasticsearch.client</span> <span class="kn">import</span> <span class="n">MlClient</span>
+
+<span class="kn">from</span> <span class="nn">langchain.embeddings.base</span> <span class="kn">import</span> <span class="n">Embeddings</span>
+
+
+<div class="viewcode-block" id="ElasticsearchEmbeddings"><a class="viewcode-back" href="../../../modules/embeddings.html#langchain.embeddings.ElasticsearchEmbeddings">[docs]</a><span class="k">class</span> <span class="nc">ElasticsearchEmbeddings</span><span class="p">(</span><span class="n">Embeddings</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Wrapper around Elasticsearch embedding models.</span>
+
+<span class="sd">    This class provides an interface to generate embeddings using a model deployed</span>
+<span class="sd">    in an Elasticsearch cluster. It requires an Elasticsearch connection object</span>
+<span class="sd">    and the model_id of the model deployed in the cluster.</span>
+
+<span class="sd">    In Elasticsearch you need to have an embedding model loaded and deployed.</span>
+<span class="sd">    - https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-trained-model.html</span>
+<span class="sd">    - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-deploy-models.html</span>
+<span class="sd">    &quot;&quot;&quot;</span>  <span class="c1"># noqa: E501</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">client</span><span class="p">:</span> <span class="n">MlClient</span><span class="p">,</span>
+        <span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">input_field</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;text_field&quot;</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the ElasticsearchEmbeddings instance.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            client (MlClient): An Elasticsearch ML client object.</span>
+<span class="sd">            model_id (str): The model_id of the model deployed in the Elasticsearch</span>
+<span class="sd">                cluster.</span>
+<span class="sd">            input_field (str): The name of the key for the input text field in the</span>
+<span class="sd">                document. Defaults to &#39;text_field&#39;.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="n">client</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_id</span> <span class="o">=</span> <span class="n">model_id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_field</span> <span class="o">=</span> <span class="n">input_field</span>
+
+<div class="viewcode-block" id="ElasticsearchEmbeddings.from_credentials"><a class="viewcode-back" href="../../../modules/embeddings.html#langchain.embeddings.ElasticsearchEmbeddings.from_credentials">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_credentials</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span>
+        <span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">es_cloud_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">es_user</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">es_password</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">input_field</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;text_field&quot;</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ElasticsearchEmbeddings</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Instantiate embeddings from Elasticsearch credentials.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            model_id (str): The model_id of the model deployed in the Elasticsearch</span>
+<span class="sd">                cluster.</span>
+<span class="sd">            input_field (str): The name of the key for the input text field in the</span>
+<span class="sd">                document. Defaults to &#39;text_field&#39;.</span>
+<span class="sd">            es_cloud_id: (str, optional): The Elasticsearch cloud ID to connect to.</span>
+<span class="sd">            es_user: (str, optional): Elasticsearch username.</span>
+<span class="sd">            es_password: (str, optional): Elasticsearch password.</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            .. code-block:: python</span>
+
+<span class="sd">                from langchain.embeddings import ElasticsearchEmbeddings</span>
+
+<span class="sd">                # Define the model ID and input field name (if different from default)</span>
+<span class="sd">                model_id = &quot;your_model_id&quot;</span>
+<span class="sd">                # Optional, only if different from &#39;text_field&#39;</span>
+<span class="sd">                input_field = &quot;your_input_field&quot;</span>
+
+<span class="sd">                # Credentials can be passed in two ways. Either set the env vars</span>
+<span class="sd">                # ES_CLOUD_ID, ES_USER, ES_PASSWORD and they will be automatically</span>
+<span class="sd">                # pulled in, or pass them in directly as kwargs.</span>
+<span class="sd">                embeddings = ElasticsearchEmbeddings.from_credentials(</span>
+<span class="sd">                    model_id,</span>
+<span class="sd">                    input_field=input_field,</span>
+<span class="sd">                    # es_cloud_id=&quot;foo&quot;,</span>
+<span class="sd">                    # es_user=&quot;bar&quot;,</span>
+<span class="sd">                    # es_password=&quot;baz&quot;,</span>
+<span class="sd">                )</span>
+
+<span class="sd">                documents = [</span>
+<span class="sd">                    &quot;This is an example document.&quot;,</span>
+<span class="sd">                    &quot;Another example document to generate embeddings for.&quot;,</span>
+<span class="sd">                ]</span>
+<span class="sd">                embeddings_generator.embed_documents(documents)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">elasticsearch</span> <span class="kn">import</span> <span class="n">Elasticsearch</span>
+            <span class="kn">from</span> <span class="nn">elasticsearch.client</span> <span class="kn">import</span> <span class="n">MlClient</span>
+        <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span>
+                <span class="s2">&quot;elasticsearch package not found, please install with &#39;pip install &quot;</span>
+                <span class="s2">&quot;elasticsearch&#39;&quot;</span>
+            <span class="p">)</span>
+
+        <span class="n">es_cloud_id</span> <span class="o">=</span> <span class="n">es_cloud_id</span> <span class="ow">or</span> <span class="n">get_from_env</span><span class="p">(</span><span class="s2">&quot;es_cloud_id&quot;</span><span class="p">,</span> <span class="s2">&quot;ES_CLOUD_ID&quot;</span><span class="p">)</span>
+        <span class="n">es_user</span> <span class="o">=</span> <span class="n">es_user</span> <span class="ow">or</span> <span class="n">get_from_env</span><span class="p">(</span><span class="s2">&quot;es_user&quot;</span><span class="p">,</span> <span class="s2">&quot;ES_USER&quot;</span><span class="p">)</span>
+        <span class="n">es_password</span> <span class="o">=</span> <span class="n">es_password</span> <span class="ow">or</span> <span class="n">get_from_env</span><span class="p">(</span><span class="s2">&quot;es_password&quot;</span><span class="p">,</span> <span class="s2">&quot;ES_PASSWORD&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Connect to Elasticsearch</span>
+        <span class="n">es_connection</span> <span class="o">=</span> <span class="n">Elasticsearch</span><span class="p">(</span>
+            <span class="n">cloud_id</span><span class="o">=</span><span class="n">es_cloud_id</span><span class="p">,</span> <span class="n">basic_auth</span><span class="o">=</span><span class="p">(</span><span class="n">es_user</span><span class="p">,</span> <span class="n">es_password</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">client</span> <span class="o">=</span> <span class="n">MlClient</span><span class="p">(</span><span class="n">es_connection</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">model_id</span><span class="p">,</span> <span class="n">input_field</span><span class="o">=</span><span class="n">input_field</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ElasticsearchEmbeddings.from_es_connection"><a class="viewcode-back" href="../../../modules/embeddings.html#langchain.embeddings.ElasticsearchEmbeddings.from_es_connection">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_es_connection</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span>
+        <span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">es_connection</span><span class="p">:</span> <span class="n">Elasticsearch</span><span class="p">,</span>
+        <span class="n">input_field</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;text_field&quot;</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ElasticsearchEmbeddings</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Instantiate embeddings from an existing Elasticsearch connection.</span>
+
+<span class="sd">        This method provides a way to create an instance of the ElasticsearchEmbeddings</span>
+<span class="sd">        class using an existing Elasticsearch connection. The connection object is used</span>
+<span class="sd">        to create an MlClient, which is then used to initialize the</span>
+<span class="sd">        ElasticsearchEmbeddings instance.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">        model_id (str): The model_id of the model deployed in the Elasticsearch cluster.</span>
+<span class="sd">        es_connection (elasticsearch.Elasticsearch): An existing Elasticsearch</span>
+<span class="sd">        connection object. input_field (str, optional): The name of the key for the</span>
+<span class="sd">        input text field in the document. Defaults to &#39;text_field&#39;.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">        ElasticsearchEmbeddings: An instance of the ElasticsearchEmbeddings class.</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            .. code-block:: python</span>
+
+<span class="sd">                from elasticsearch import Elasticsearch</span>
+
+<span class="sd">                from langchain.embeddings import ElasticsearchEmbeddings</span>
+
+<span class="sd">                # Define the model ID and input field name (if different from default)</span>
+<span class="sd">                model_id = &quot;your_model_id&quot;</span>
+<span class="sd">                # Optional, only if different from &#39;text_field&#39;</span>
+<span class="sd">                input_field = &quot;your_input_field&quot;</span>
+
+<span class="sd">                # Create Elasticsearch connection</span>
+<span class="sd">                es_connection = Elasticsearch(</span>
+<span class="sd">                    hosts=[&quot;localhost:9200&quot;], http_auth=(&quot;user&quot;, &quot;password&quot;)</span>
+<span class="sd">                )</span>
+
+<span class="sd">                # Instantiate ElasticsearchEmbeddings using the existing connection</span>
+<span class="sd">                embeddings = ElasticsearchEmbeddings.from_es_connection(</span>
+<span class="sd">                    model_id,</span>
+<span class="sd">                    es_connection,</span>
+<span class="sd">                    input_field=input_field,</span>
+<span class="sd">                )</span>
+
+<span class="sd">                documents = [</span>
+<span class="sd">                    &quot;This is an example document.&quot;,</span>
+<span class="sd">                    &quot;Another example document to generate embeddings for.&quot;,</span>
+<span class="sd">                ]</span>
+<span class="sd">                embeddings_generator.embed_documents(documents)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Importing MlClient from elasticsearch.client within the method to</span>
+        <span class="c1"># avoid unnecessary import if the method is not used</span>
+        <span class="kn">from</span> <span class="nn">elasticsearch.client</span> <span class="kn">import</span> <span class="n">MlClient</span>
+
+        <span class="c1"># Create an MlClient from the given Elasticsearch connection</span>
+        <span class="n">client</span> <span class="o">=</span> <span class="n">MlClient</span><span class="p">(</span><span class="n">es_connection</span><span class="p">)</span>
+
+        <span class="c1"># Return a new instance of the ElasticsearchEmbeddings class with</span>
+        <span class="c1"># the MlClient, model_id, and input_field</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">model_id</span><span class="p">,</span> <span class="n">input_field</span><span class="o">=</span><span class="n">input_field</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_embedding_func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">texts</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Generate embeddings for the given texts using the Elasticsearch model.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            texts (List[str]): A list of text strings to generate embeddings for.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List[List[float]]: A list of embeddings, one for each text in the input</span>
+<span class="sd">                list.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">infer_trained_model</span><span class="p">(</span>
+            <span class="n">model_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model_id</span><span class="p">,</span> <span class="n">docs</span><span class="o">=</span><span class="p">[{</span><span class="bp">self</span><span class="o">.</span><span class="n">input_field</span><span class="p">:</span> <span class="n">text</span><span class="p">}</span> <span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">texts</span><span class="p">]</span>
+        <span class="p">)</span>
+
+        <span class="n">embeddings</span> <span class="o">=</span> <span class="p">[</span><span class="n">doc</span><span class="p">[</span><span class="s2">&quot;predicted_value&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">response</span><span class="p">[</span><span class="s2">&quot;inference_results&quot;</span><span class="p">]]</span>
+        <span class="k">return</span> <span class="n">embeddings</span>
+
+<div class="viewcode-block" id="ElasticsearchEmbeddings.embed_documents"><a class="viewcode-back" href="../../../modules/embeddings.html#langchain.embeddings.ElasticsearchEmbeddings.embed_documents">[docs]</a>    <span class="k">def</span> <span class="nf">embed_documents</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">texts</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Generate embeddings for a list of documents.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            texts (List[str]): A list of document text strings to generate embeddings</span>
+<span class="sd">                for.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List[List[float]]: A list of embeddings, one for each document in the input</span>
+<span class="sd">                list.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_embedding_func</span><span class="p">(</span><span class="n">texts</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ElasticsearchEmbeddings.embed_query"><a class="viewcode-back" href="../../../modules/embeddings.html#langchain.embeddings.ElasticsearchEmbeddings.embed_query">[docs]</a>    <span class="k">def</span> <span class="nf">embed_query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Generate an embedding for a single query text.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text (str): The query text to generate an embedding for.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List[float]: The embedding for the input query text.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_embedding_func</span><span class="p">([</span><span class="n">text</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span></div></div>
+</pre></div>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Harrison Chase<br/>
+  
+      &copy; Copyright 2023, Harrison Chase.<br/>
+    Last updated on Jun 09, 2023.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
