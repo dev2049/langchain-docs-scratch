@@ -2,4 +2,4 @@ Base classes
 ========================
 
 .. automodule:: langchain.schema
-   :inherited-members: BaseModel
+   :inherited-members:
